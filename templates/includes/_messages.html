@@ -1,0 +1,15 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+    {% if category == 'error' %}
+    		<li class="alert alert-danger alert-dismissable" style="width: 40%;">
+  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>{{ message }}</li>
+    {% else %}
+      		<li class="alert alert-success alert-dismissable" style="width: 40%;">
+  			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>">{{ message }}</li>
+  	{% endif %}
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
