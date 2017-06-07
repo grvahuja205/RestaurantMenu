@@ -1,0 +1,38 @@
+
+{% extends 'layout.html' %}
+
+{% block body %}
+{% if restaurant.owner_id == current_user.id %}
+<a class="btn btn-primary pull-right" role="button" style="margin-top: 1px;" href = "{{ url_for('newMenuItem', restaurant_id = restaurant.id) }}">Add New Item</a>
+{% endif %}
+		
+<div class="container">
+<h1 class="mianh">{{ restaurant.name }}</h1>
+<div class="list-group">
+{% for i in items %}
+	<div class="list-group-item"> 
+	<h4 class="list-group-item-heading" style="font-size: 30px">{{ i.name }}<span class="badge pull-right">{{ i.price }}</span></h4>
+	{% if i.description != '' %}
+	<p class="list-group-item-text">{{ i.description }}
+		{% if restaurant.owner_id == current_user.id%}
+    		<a class="btn btn-warning pull-right btn-sm" role="button" style="margin-top: 1px;" href = "{{ url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id) }}">Edit This Item</a>
+    		<a class="btn btn-danger pull-right btn-sm" role="button" style="margin-top: 1px;" href = "{{ url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id) }}">Delete This Item</a>
+    	{% endif %}
+    </p>
+    {% else %}
+    <p class="list-group-item-text">Delicious Food Item
+    	{% if restaurant.owner_id == current_user.id%}
+    		<a class="btn btn-warning pull-right btn-sm" role="button" style="margin-top: 1px;" href = "{{ url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id) }}">Edit This Item</a>
+    		<a class="btn btn-danger pull-right btn-sm" role="button" style="margin-top: 1px;" href = "{{ url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id) }}">Delete This Item</a>
+    	{% endif %}
+    </p>
+    {% endif %}
+    </div>
+{% endfor %}
+</div>
+</div>
+
+
+{% endblock %}
+
+

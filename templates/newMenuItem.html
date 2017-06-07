@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>New Menu Item For Restaurant {{ restaurant_name }}</h1>
+{% from 'includes/_formhelpers.html' import render_field %}
+<form action="{{ url_for('newMenuItem', restaurant_id = restaurant_id) }}" method ='post'>
+	{{ form.csrf_token }}
+	{{ render_field(form.mname) }}<br>
+	{{ render_field(form.mdesc) }}<br>
+	{{ render_field(form.mprice) }}<br>
+	{{ render_field(form.mtype) }}<br>
+	<button type="submit" class="btn btn-primary">Add Item</button>
+</form>
+<a href="{{ url_for('DisplayRestaurantMenu', restaurant_id = restaurant_id) }}">Cancel</a>
+{% endblock %}

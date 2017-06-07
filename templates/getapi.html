@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h1>Generate Token</h1>
+{% from 'includes/_formhelpers.html' import render_field %}
+<form action='/restaurants/api' method="post">
+<div class="form-group">
+	{{ tform.csrf_token }}
+	{{ render_field(tform.tname) }}<br>
+	{{ render_field(tform.email) }}<br>
+</div>
+	<button type="submit" class="btn btn-primary">Generate</button>
+</form>
+
+{% endblock %}

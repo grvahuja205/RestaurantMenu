@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+	.mianh{
+    text-align: center;
+    font-family: 'Metamorphous', cursive;
+  	}
+  	.navh{
+  		font-family: 'Gloria Hallelujah', cursive;
+  		font-size: 20px;
+  	}
+</style>
+	<title>My Flask App</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Metamorphous" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+</head>
+<body style="background-color: pink">
+
+{% include 'includes/_navbar.html' %}
+{% include 'includes/_formhelpers.html' %}
+
+<div class="container">
+{% include 'includes/_messages.html' %}
+{% block body %}{% endblock %}
+</div>
+</body>
+</html>

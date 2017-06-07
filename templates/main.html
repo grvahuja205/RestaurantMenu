@@ -1,0 +1,33 @@
+
+<style type="text/css">
+	.mianh{
+    text-align: center;
+    font-family: 'Metamorphous', cursive;
+  }
+</style>
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1 class="mianh">Restaurants In Your Area</h1>
+<div class="row">
+{% for i in restaurant %}
+
+<div class="col-md-4">
+    <div class="thumbnail">
+      <a href="{{ url_for('DisplayRestaurantMenu', restaurant_id = i.id) }}">
+        <img src="static/{{ i.image }}" alt="{{ i.name }}" style="width: 100%">
+        <div class="caption">
+          <p>{{ i.name }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+<!--<div class="jumbotron text-center">
+	<h2><a href="{{ url_for('DisplayRestaurantMenu', restaurant_id = i.id) }}">{{ i.name }}</h2>
+</div>-->
+
+{% endfor %}
+</div>
+
+{% endblock %}
